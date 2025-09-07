@@ -1,6 +1,6 @@
 ---
 title: '"An Open Source Collaborative Effort"'
-date: 2025-01-28T09:18:18+03:00
+date: 2025-01-23T09:18:18+03:00
 description: "Little article about Ardour's 'Open Source' vision."
 published: true
 thumbnail: '/posts/ardour.png'
