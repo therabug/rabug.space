@@ -89,7 +89,7 @@
 
 <section class="flex flex-col items-center justify-center gap-4 p-16 py-0">
 	<div
-		class="flex min-h-[1.2em] items-center justify-center text-6xl font-bold select-none md:text-9xl"
+		class="mt-8 flex min-h-[1.2em] items-center justify-center text-6xl font-bold select-none md:mt-0 md:text-9xl"
 	>
 		<h1 class="hello">
 			{displayedText}

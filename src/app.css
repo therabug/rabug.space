@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @theme {
 	--color-dark-1: #2a2530;
@@ -13,6 +14,6 @@
 }
 
 body {
-	background-color: var(--color-dark-4);
+	background-color: var(--color-dark-6);
 	color: white;
 }

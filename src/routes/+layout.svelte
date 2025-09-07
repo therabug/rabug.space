@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href="favicon.svg" />
+	<link rel="icon" href="/favicon.png" />
 	<title>therabug</title>
 </svelte:head>
 
