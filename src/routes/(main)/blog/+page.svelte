@@ -7,7 +7,7 @@
 
 <div class="mx-auto max-w-7xl px-4 py-8">
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{#each data.posts as post ()}
+		{#each data.posts as post (post.slug)}
 			<a
 				class="relative block min-h-48 w-full cursor-pointer flex-col overflow-clip rounded-2xl border-1 border-dark-1 bg-dark-3 p-6 shadow-md transition-all duration-300 ease-out hover:bg-dark-2 hover:shadow-lg"
 				href="/blog/{post.slug}"

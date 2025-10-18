@@ -28,7 +28,7 @@
 
 <a
 	class="fixed right-0 bottom-0 m-6 flex gap-2 text-white/20"
-	href="https://github.com/therabug/rabug.space/tree/main/src/clock-made-of-clocks"
+	href="https://github.com/therabug/rabug.space/tree/main/src/routes/clock-made-of-clocks"
 	><SiGithub />
 	<p class="flex">Source Code<ArrowUpRight /></p></a
 >
