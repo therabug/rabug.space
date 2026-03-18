@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--color-light-1: #ffffff;
+	--color-light-2: #f6f5f4;
+	--color-light-3: #deddda;
+	--color-light-4: #c0bfbc;
+	--color-light-5: #9a9996;
+
+	--color-dark-1: #77767b;
+	--color-dark-2: #5e5c64;
+	--color-dark-3: #3d3846;
+	--color-dark-4: #241f31;
+	--color-dark-5: #000000;
+
+	--color-purple-1: #dc8add;
+	--color-purple-2: #c061cb;
+	--color-purple-3: #9141ac;
+	--color-purple-4: #813d9c;
+	--color-purple-5: #613583;
+}
+
+.btn {
+	@apply flex items-center justify-center rounded-xl transition-all ease-out select-none;
+}
+
+.btn.active {
+	@apply bg-dark-2 active:bg-dark-1;
+}
+
+.btn.regular {
+	@apply bg-dark-3 ease-out hover:bg-dark-2 active:bg-dark-1;
+}
