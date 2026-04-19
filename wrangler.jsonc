@@ -10,5 +10,11 @@
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
-	"compatibility_flags": ["nodejs_compat"]
+	"compatibility_flags": ["nodejs_compat"],
+	"routes": [
+		{
+			"pattern": "rabug.space/*",
+			"zone_name": "rabug.space"
+		}
+	]
 }
