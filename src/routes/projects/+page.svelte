@@ -19,33 +19,7 @@
 				"I have 1 year of experience in web development using modern technologies such as SvelteKit, Svelte, React, Next.js, Deno, Node.js, and Bun.js. I'm comfortable working on both frontend and backend, and have contributed to full-stack projects by building end-to-end solutions. This portfolio site you're viewing is actually my third full rewrite. :)"
 		}
 	];
-
-	const webProjects = [
-		{
-			title: 'Clock made of tiny clocks',
-			thumbnailUrl: '/projects/tinyclocks.png',
-			projectUrl: '/clock-made-of-clocks'
-		}
-	];
 </script>
-
-<h1 class="pt-4 text-center text-2xl font-bold select-none md:text-6xl">Web Projects</h1>
-
-<div class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2">
-	{#each webProjects as project (project.title)}
-		<a
-			class="group relative flex min-h-48 w-full cursor-pointer flex-col overflow-clip rounded-2xl border-1 border-dark-1 bg-dark-3"
-			href={project.projectUrl}
-		>
-			<input type="checkbox" class="peer sr-only" />
-
-			<img src={project.thumbnailUrl} alt={project.title} class="h-full w-full object-cover" />
-			<div class="flex items-center justify-center p-3">
-				<h3 class="text-lg font-bold">{project.title}</h3>
-			</div>
-		</a>
-	{/each}
-</div>
 
 <h1 class="mx-10 pt-4 text-center text-xl font-bold select-none md:text-6xl">
 	Business (or Hobby) Whatever You Want To Call It

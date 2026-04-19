@@ -1,9 +1,16 @@
 <script lang="ts">
-	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import '../app.css';
+	import Header from '$lib/components/Header.svelte';
 
 	let { children } = $props();
-
-	injectAnalytics();
 </script>
 
-{@render children?.()}
+<svelte:head>
+	<link rel="icon" href="/favicon.png" />
+	<title>therabug</title>
+</svelte:head>
+
+<Header />
+<div class="pt-2 md:pt-30">
+	{@render children?.()}
+</div>
