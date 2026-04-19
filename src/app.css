@@ -2,6 +2,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
+	/* Existing Dark Tones */
 	--color-dark-1: #2a2530;
 	--color-dark-2: #221e26;
 	--color-dark-3: #1d1922;
@@ -10,7 +11,16 @@
 	--color-dark-6: #0d0b10;
 	--color-dark-7: #08070a;
 
-	--color-primary: #ff6f61;
+	/* New Purple Primary & Tones */
+	--color-primary: #9d50bb;
+
+	--color-purple-1: #3b2046; /* Deepest / Muted shadow */
+	--color-purple-2: #522d62;
+	--color-purple-3: #6a3a7e;
+	--color-purple-4: #82479a; /* Mid-tone */
+	--color-purple-5: #9d50bb; /* Primary Base */
+	--color-purple-6: #b173ca;
+	--color-purple-7: #c695d9; /* Lightest / Highlight */
 }
 
 body {

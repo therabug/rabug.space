@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Book, Folder, Headset, House, Icon } from 'lucide-svelte';
+	import { Book, Folder, Headset, House, Icon, Gamepad } from 'lucide-svelte';
 	import { page } from '$app/state';
 
 	interface Page {
@@ -24,11 +24,22 @@
 </script>
 
 <header
-	class="fixed top-0 z-50 hidden min-w-screen items-center justify-center border-b border-dark-3 bg-dark-5 p-4 select-none md:flex"
+	class="fixed top-0 z-50 hidden min-w-screen items-center justify-between border-b border-dark-3 bg-dark-5 p-4 select-none md:flex"
 >
+	<div>
+		<a
+			draggable={false}
+			href="https://apps.rabug.space"
+			class="flex aspect-square h-full items-center gap-2 rounded-lg bg-primary p-2 transition-all duration-300 ease-out hover:bg-purple-7 active:bg-purple-5"
+		>
+			<Gamepad></Gamepad>
+		</a>
+	</div>
+
 	<div class="flex gap-2">
 		{#each navItems as item (item.label)}
 			<a
+				draggable={false}
 				href={item.path}
 				class={`flex items-center gap-2 rounded-lg p-2 px-8 text-lg transition-all duration-300 ease-out hover:bg-dark-1 active:bg-dark-2 ${isActive(item.path) ? 'bg-dark-3' : ''}`}
 			>
@@ -37,6 +48,8 @@
 			</a>
 		{/each}
 	</div>
+
+	<div></div>
 </header>
 
 <nav
