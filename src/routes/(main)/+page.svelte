@@ -2,22 +2,22 @@
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	/* eslint-disable svelte/no-at-html-tags */
 	import {
+		SiAffinity,
 		SiBevy,
-		SiBlender,
 		SiBun,
-		SiCplusplus,
+		SiC,
+		SiDavinciresolve,
 		SiDeno,
-		SiDrizzle,
-		SiGo,
+		SiGnome,
 		SiGodotengine,
-		SiKrita,
+		SiJavascript,
 		SiNextdotjs,
 		SiNodedotjs,
 		SiNuke,
+		SiPostgresql,
 		SiReact,
 		SiRust,
-		SiSvelte,
-		SiUnrealengine
+		SiSvelte
 	} from '@icons-pack/svelte-simple-icons';
 	import { Gamepad } from 'lucide-svelte';
 	import { onDestroy } from 'svelte';
@@ -42,23 +42,46 @@
 
 	let { data } = $props();
 
-	const techStack = [
+	type Knowledge = {
+		name: string;
+		icon: typeof SiSvelte;
+	};
+
+	type TechStack = {
+		name: string;
+		knowledge: Knowledge[];
+		accentColor?: string;
+	};
+
+	const frontend: Knowledge[] = [
 		{ name: 'SvelteKit', icon: SiSvelte },
 		{ name: 'React', icon: SiReact },
 		{ name: 'Next.js', icon: SiNextdotjs },
+		{ name: 'Libadwaita', icon: SiGnome }
+	];
+
+	const backend: Knowledge[] = [
+		{ name: 'PostgreSQL', icon: SiPostgresql },
+		{ name: 'Elysia.js', icon: SiJavascript },
+		{ name: 'Nodejs', icon: SiNodedotjs },
 		{ name: 'Deno', icon: SiDeno },
-		{ name: 'Node.js', icon: SiNodedotjs },
-		{ name: 'Bun.js', icon: SiBun },
+		{ name: 'Bun', icon: SiBun }
+	];
+
+	const misc: Knowledge[] = [
 		{ name: 'Godot', icon: SiGodotengine },
-		{ name: 'Unreal Engine', icon: SiUnrealengine },
 		{ name: 'Bevy', icon: SiBevy },
-		{ name: 'Blender', icon: SiBlender },
-		{ name: 'C/C++', icon: SiCplusplus },
 		{ name: 'Rust', icon: SiRust },
-		{ name: 'Krita', icon: SiKrita },
-		{ name: 'Go', icon: SiGo },
-		{ name: 'Drizzle (PostgreSQL)', icon: SiDrizzle },
-		{ name: 'Adobe Creative Suite', icon: SiNuke }
+		{ name: 'Davinci Resolve', icon: SiDavinciresolve },
+		{ name: '(major) Adobe Creative Suite', icon: SiNuke },
+		{ name: 'Affinity', icon: SiAffinity },
+		{ name: 'C/C++', icon: SiC }
+	];
+
+	const techStack: TechStack[] = [
+		{ name: 'Frontend', knowledge: frontend, accentColor: '#FFC866' },
+		{ name: 'Backend', knowledge: backend, accentColor: '#A454FF' },
+		{ name: 'Misc.', knowledge: misc, accentColor: '#84FF6B' }
 	];
 
 	function getRandomSpeed(baseSpeed: number): number {
@@ -75,9 +98,9 @@
 			isDeleting = true;
 			timeout = setTimeout(typeText, pauseTime);
 		} else if (isDeleting && displayedText.length > 0) {
-			displayedText = currentHello.substring(0, displayedText.length - 1);
+			displayedText = displayedText.substring(0, displayedText.length - 1);
 			timeout = setTimeout(typeText, getRandomSpeed(baseDeleteSpeed));
-		} else if (isDeleting && displayedText.length === 0) {
+		} else {
 			isDeleting = false;
 			currentIndex = (currentIndex + 1) % helloList.length;
 			timeout = setTimeout(typeText, getRandomSpeed(baseTypeSpeed));
@@ -126,15 +149,34 @@
 	<section class="flex flex-col items-center justify-center gap-4 py-4">
 		<div class="mt-8 flex w-full flex-col gap-4">
 			<p class="text-md mb-2 text-center md:text-xl">
-				<span class="rounded-2xl border-2 border-white/20 bg-dark-5 p-3 text-2xl">Tech Stack</span>
+				<span class="rounded-2xl border-2 border-white/20 bg-dark-5 p-3 text-2xl"
+					>Tech Stack (not professionally!)</span
+				>
 			</p>
 			<div
-				class="grid grid-cols-2 rounded-3xl border-2 border-white/20 bg-dark-5 text-lg sm:grid-cols-3 md:rounded-xl lg:text-xl xl:grid-cols-4"
+				class="flex flex-col gap-4 rounded-3xl border-2 border-white/20 bg-dark-5 p-4 md:rounded-xl"
 			>
-				{#each techStack as tech (tech.name)}
-					<div class="flex flex-col items-center justify-center gap-2 p-4">
-						<tech.icon size={48} />
-						<p class="text-center text-gray-400">{tech.name}</p>
+				{#each techStack as title (title.name)}
+					<div>
+						<div
+							class="rounded-xl rounded-b-none border-2 border-b-0 border-white/10 p-2 text-center text-2xl"
+							style:--accent={`${title.accentColor}`}
+							style:background-color="color-mix(in srgb, var(--accent) 5%, var(--color-dark-5))"
+						>
+							{title.name}
+						</div>
+						<div
+							style:--accent={`${title.accentColor}`}
+							style:background-color="color-mix(in srgb, var(--accent) 10%, transparent)"
+							class="grid grid-cols-2 rounded-3xl rounded-t-none! border-2 border-white/20 text-lg sm:grid-cols-3 md:rounded-xl lg:text-xl xl:grid-cols-4"
+						>
+							{#each title.knowledge as tech (tech.name)}
+								<div class="flex flex-col items-center justify-center gap-2 p-4">
+									<tech.icon size={48} />
+									<p class="text-center">{tech.name}</p>
+								</div>
+							{/each}
+						</div>
 					</div>
 				{/each}
 			</div>

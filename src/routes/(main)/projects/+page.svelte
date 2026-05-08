@@ -1,5 +1,7 @@
 <script>
-	const projects = [
+	import { ArrowUpRight } from 'lucide-svelte';
+
+	const project = [
 		{
 			title: 'Youtube',
 			thumbnailUrl: 'projects/youtube.png',
@@ -19,31 +21,47 @@
 				"I have 1 year of experience in web development using modern technologies such as SvelteKit, Svelte, React, Next.js, Deno, Node.js, and Bun.js. I'm comfortable working on both frontend and backend, and have contributed to full-stack projects by building end-to-end solutions. This portfolio site you're viewing is actually my third full rewrite. :)"
 		}
 	];
+
+	const projects = [
+		{
+			name: 'Clock Made Out of Clocks',
+			thumbnailUrl: 'projects/tinyclocks.png',
+			navigate: '/projects/clock-made-of-clocks'
+		}
+	];
 </script>
 
-<h1 class="mx-10 pt-4 text-center text-xl font-bold select-none md:text-6xl">
-	Business (or Hobby) Whatever You Want To Call It
-</h1>
+<h1 class="mx-10 pt-4 text-center text-xl font-bold select-none md:text-6xl">Works</h1>
+
+<div class="grid grid-cols-1 gap-6 p-8 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))]">
+	{#each project as work (work.title)}
+		<label for="project" class="group relative aspect-video overflow-clip">
+			<div class="overflow-clip rounded-xl border border-white/20 bg-dark-3">
+				<p class="p-4 text-center text-2xl font-bold">{work.title}</p>
+				<img src={work.thumbnailUrl} alt="" class="h-full w-full object-cover" />
+				<p class="inset-0 h-full bg-white/5 p-4 text-center">
+					{work.description}
+				</p>
+			</div>
+		</label>
+	{/each}
+</div>
+
+<h1 class="mx-10 pt-4 text-center text-xl font-bold select-none md:text-6xl">Projects</h1>
 
 <div
 	class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 xl:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]"
 >
-	{#each projects as project (project.title)}
-		<label
-			class="group relative flex min-h-48 w-full cursor-pointer flex-col overflow-clip rounded-2xl border-1 border-dark-1 bg-dark-3"
-		>
-			<input type="checkbox" class="peer sr-only" />
-
-			<img src={project.thumbnailUrl} alt={project.title} class="h-full w-full object-cover" />
-			<div class="flex items-center justify-center p-3">
-				<h3 class="text-lg font-bold">{project.title}</h3>
+	{#each projects as project (project.name)}
+		<label for="project" class="group relative aspect-video overflow-clip">
+			<div class="relative overflow-clip rounded-xl border border-white/20 bg-dark-3">
+				<a href={project.navigate} class="absolute h-full w-full" aria-label="link"></a>
+				<img src={project.thumbnailUrl} alt="" class="h-full w-full object-cover" />
+				<div class="flex items-center justify-center text-blue-300 underline underline-offset-5">
+					<p class="p-4 text-center text-2xl font-bold">{project.name}</p>
+					<ArrowUpRight />
+				</div>
 			</div>
-
-			<p
-				class="absolute inset-0 flex items-center justify-center bg-dark-3/95 p-4 px-8 text-sm text-gray-300 opacity-0 transition-opacity ease-out group-hover:opacity-100 peer-checked:opacity-100"
-			>
-				{project.description}
-			</p>
 		</label>
 	{/each}
 </div>

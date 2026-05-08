@@ -1,0 +1,40 @@
+.little-clock {
+	height: 3rem;
+	width: 3rem;
+	background-color: var(--bg-black);
+	border: 0.1rem solid oklch(30% 0 0);
+	border-radius: 25%;
+	position: relative;
+	display: block;
+	transition: all ease-out 250ms;
+}
+
+.little-clock:hover {
+	background-color: var(--color-dark-2);
+}
+
+.ayrac {
+	height: 0.3rem;
+	width: 50%;
+	background: rgb(15, 255, 230);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) rotate(0deg);
+	transform-origin: 0 50%;
+	transition: transform 250ms ease-out;
+}
+
+.little-clock .ayrac:nth-child(1) {
+	width: 50%;
+	transform: translateY(-70%) rotate(90deg);
+}
+
+.clocks {
+	display: grid;
+	grid-template:
+		repeat(6, 1fr) /
+		repeat(4, 1fr);
+	gap: 0.125rem;
+	width: 10%;
+}

@@ -23,8 +23,14 @@
 	--color-purple-7: #c695d9; /* Lightest / Highlight */
 }
 
+@font-face {
+	font-family: 'GoogleSans';
+	src: url('/fonts/google-sans/GoogleSans.ttf') format('ttf');
+}
+
 body {
 	background-color: var(--color-dark-6);
 	color: white;
+	font-family: 'Google Sans';
 	min-height: 100vh;
 }
