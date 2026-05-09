@@ -24,6 +24,11 @@
 
 	const projects = [
 		{
+			name: 'Mind Area',
+			thumbnailUrl: 'projects/mind-area.png',
+			navigate: '/projects/mind-area'
+		},
+		{
 			name: 'Clock Made Out of Clocks',
 			thumbnailUrl: 'projects/tinyclocks.png',
 			navigate: '/projects/clock-made-of-clocks'
