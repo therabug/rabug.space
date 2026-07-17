@@ -1,164 +1,110 @@
 <script lang="ts">
-    import { marked } from 'marked';
-
-    type TypewriterContanier = {
-      display: string,
-      index: number
-    };
+    import { resolve } from "$app/paths";
+    import Markdown from "$lib/components/Markdown.svelte";
+    import TypeWriter from "$lib/components/TypeWriter.svelte";
 
     let { data } = $props();
 
-    const getBio = async () => {
-      const response = await fetch("https://raw.githubusercontent.com/therabug/therabug/refs/heads/main/README.md");
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch!');
-      }
-
-      return response.text();
-    }
-
-    let bio = $state<Promise<string>>();
-
-    let timer: number;
-
-    const typeEffect = (typewriter: TypewriterContanier, text: string) => {
-      const lastIndex = text.length - 1;
-      typewriter.index = typewriter.index < lastIndex ? typewriter.index + 1 : lastIndex;
-
-      typewriter.display = text.substring(0, typewriter.index + 1);
-    };
+    let buttons: { img: string, href: string, alt: string }[] = [
+      { img: "https://yesterhost.neocities.org/archive/buttons/button222.png", href: "https://godotengine.org", alt: "godot engine" },
+      { img: "https://capstasher.neocities.org/88x31Buttons/anybrowser6.gif", href: "about:config", alt: "viewed with any browser" },
+      { img: "https://88x31.nl/gifs/blender_get.gif", href: "https://blender.org", alt: "blender" },
+      { img: "https://capstasher.neocities.org/88x31Buttons/click_here.gif", href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", alt: "click here!" },
+      { img: "", href: "", alt: "" },
+    ];
 
     const welcomeMessage = "Hello, friend. Hello friend? That's lame.";
-
-    let typewriter: TypewriterContanier = $state({ display: "", index: -1 });
-
-    const tick = () => {
-      typeEffect(typewriter, welcomeMessage);
-
-      let timeout = /[.?!]/.test(welcomeMessage[typewriter.index]) ? 1000 : 100;
-
-      if (typewriter.index < welcomeMessage.length - 1) {
-        timer = setTimeout(tick, timeout);
-      }
-    };
-
-    $effect(() => {
-      timer = setTimeout(tick, 100);
-
-      bio = getBio();
-
-      return () => {
-        clearTimeout(timer);
-      }
-    });
 </script>
 
-
-<div class="home-contanier">
+<div class="home-container">
     <div class="terminal">
-        $
-        <div class="welcome-text">
-            <noscript>{welcomeMessage}</noscript>
-            <span>{typewriter.display}</span>
-            <div class="cursor"></div>
-            <span class="ghost">{welcomeMessage.substring(typewriter.index + 1)}</span>
+        <div class="terminal-body">
+            <span>$</span>
+            <div class="welcome-text">
+                <TypeWriter text={welcomeMessage} />
+            </div>
         </div>
     </div>
 
-
     {@html "<!-- hehe I embed the age data with ssr so you can't get the date -->"}
-    <span>hello! I'm buğra, a <span class="highlight-text">{data.age}</span> old indiviual that values experience, learning process and creation.</span>
 
-    <div class="markdown">
-        {#await bio}
-        <p>bio is loading...</p>
+    <p class="intro">
+        hello! I'm buğra, a <span class="highlight-text">{data.age}</span> year old individual
+        who values experience, the learning process, and creation.
+    </p>
 
-        {:then markdown}
-        {@html marked(markdown || '')}
+    <div class="bio">
+        <Markdown html={data.bio} />
+    </div>
 
-        {:catch error}
-        oops {error}
-        {/await}
+    <span>here is some cool buttons:</span>
+    <div class="buttons">
+        {#each buttons as button}
+            <a href={button.href}><img src={button.img} alt={button.alt}></a>
+        {/each}
     </div>
 </div>
 
 <style>
-    .ghost {
-        visibility: hidden;
-    }
-
-    .terminal {
+    .buttons {
         display: flex;
-        gap: 1rem;
-        align-items: center;
-        justify-content: start;
+        gap: 0.2rem;
     }
 
-    .home-contanier {
+    .home-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-
+        gap: 2rem;
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
         text-align: center;
 
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
-    .markdown {
+    .terminal {
         width: 100%;
-        height: 100%;
-    }
-
-    .markdown :global(img) {
-        object-fit: contain;
-        max-width: 70vw;
-
+        border-radius: 10px;
         overflow: hidden;
-
-        border-radius: 1rem;
+        border: 1px solid rgba(128, 128, 128, 0.3);
+        background: rgba(0, 0, 0, 0.85);
+        text-align: left;
     }
 
-    .cursor {
-        background-color: #55f055;
-        width: 0.3rem;
-        height: 1.5rem;
-        translate: 0rem -0.27rem;
-
-        animation: 1s linear blink infinite;
-    }
-
-    @keyframes blink {
-        0% {
-            opacity: 100%;
-        }
-        70% {
-            opacity: 100%;
-        }
-        100% {
-            opacity: 0%;
-        }
+    .terminal-body {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 1.5rem;
+        font-size: clamp(1rem, 2.2vw, 1.6rem);
     }
 
     .welcome-text {
-        white-space: pre-wrap;
-
-        height: 2rem;
-
         color: #55f055;
         font-weight: bold;
-
         display: flex;
-        gap: 0.2rem;
-
         align-items: center;
+        white-space: pre-wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .intro {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        max-width: 60ch;
+    }
+
+    .bio {
+        width: 100%;
+        text-align: left;
+        line-height: 1.7;
     }
 
     @media (max-width: 768px) {
-        .home-contanier { font-size: 1.7rem; }
-        .markdown :global(img) { border-radius: 2rem; }
-        .cursor { visibility: hidden; }
-        .ghost { display: none; }
+        .home-container { padding: 1.5rem 1rem; }
+        .intro { font-size: 1rem; }
     }
 </style>

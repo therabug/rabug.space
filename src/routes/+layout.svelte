@@ -40,11 +40,20 @@
 
 <style>
     .pageContanier {
-        padding: 0rem 3rem;
+        max-width: 50rem;
+        padding: 2rem;
+        width: 100%;
+        min-width: 0;
+
+        box-sizing: border-box;
+        overflow-wrap: anywhere;
     }
 
     .root {
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .pages {
@@ -53,6 +62,7 @@
         gap: 1rem;
         justify-content: center;
         align-items: center;
+        min-width: 0;
 
         font-size: 1.5rem;
     }
@@ -70,9 +80,5 @@
 
     .currentPage {
         color: white !important;
-    }
-
-    @media (max-width: 768px) {
-        .pageContanier { padding: 0rem 0rem; }
     }
 </style>
