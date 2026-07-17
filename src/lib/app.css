@@ -1,0 +1,19 @@
+@font-face {
+    font-family: '3270';
+    src: url("/fonts/3270.woff2") format("woff2");
+}
+
+:root {
+    --accent-color: #aa40dd;
+}
+
+.highlight-text {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+body {
+    background-color: black;
+    font-family: '3270';
+    color: white;
+}
