@@ -1,5 +1,4 @@
 import type { PageServerLoad } from "./$types";
-import DOMPurify from "isomorphic-dompurify";
 
 import { BIO_MARKDOWN_URL, BIRTHDATE } from "$env/static/private";
 import { marked } from "marked";
@@ -19,7 +18,7 @@ const getBio = async () => {
     throw new Error('Failed to fetch!');
   }
   const markdown = await response.text();
-  const html = DOMPurify.sanitize(await marked(markdown));
+  const html = await marked(markdown);
 
   bio.data = html;
   bio.cached_at = now;

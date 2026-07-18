@@ -23,7 +23,6 @@
 	},
 	"dependencies": {
 		"@sveltejs/adapter-cloudflare": "^7.2.9",
-		"isomorphic-dompurify": "^3.18.0",
 		"marked": "^18.0.6"
 	}
 }

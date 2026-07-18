@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "rabug",
+  "name": "space",
   "main": ".svelte-kit/cloudflare/_worker.js",
   "compatibility_date": "2026-07-18",
   "workers_dev": false,
