@@ -1,6 +1,12 @@
+@import 'tailwindcss';
+
 @font-face {
     font-family: '3270';
     src: url("/fonts/3270.woff2") format("woff2");
+}
+
+@theme {
+    --color-primary: #aa40dd;
 }
 
 :root {
