@@ -10,7 +10,6 @@
       { img: "https://capstasher.neocities.org/88x31Buttons/anybrowser6.gif", href: "about:config", alt: "viewed with any browser" },
       { img: "https://88x31.nl/gifs/blender_get.gif", href: "https://blender.org", alt: "blender" },
       { img: "https://capstasher.neocities.org/88x31Buttons/click_here.gif", href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", alt: "click here!" },
-      { img: "", href: "", alt: "" },
     ];
 
     const welcomeMessage = "Hello, friend. Hello friend? That's lame.";
