@@ -1,8 +1,23 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "rabug-space",
+  "name": "rabug",
   "main": ".svelte-kit/cloudflare/_worker.js",
   "compatibility_date": "2026-07-18",
   "workers_dev": false,
   "compatibility_flags": [ "nodejs_compat" ],
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  }
 }
