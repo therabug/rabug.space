@@ -25,10 +25,27 @@ const getBio = async () => {
   return html;
 }
 
-export const load: PageServerLoad = async ({ setHeaders }) => {
-    setHeaders({ "cache-control": "public, max-age=600" });
 
-    let age = new Date(Date.now()).getFullYear() - new Date(BIRTHDATE).getFullYear();
+const calculateAge = (birthdate: Date): number => {
+  const today = new Date();
+
+  let age = today.getFullYear() - birthdate.getFullYear();
+
+  const monthDifference = today.getMonth() - birthdate.getMonth();
+  const dayDifference = today.getDate() - birthdate.getDate();
+
+  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+    age--;
+  }
+
+  return age;
+};
+
+export const load: PageServerLoad = async ({ setHeaders }) => {
+  setHeaders({ "cache-control": "public, max-age=600" });
+
+    let age = calculateAge(new Date(BIRTHDATE));
+
     let bio = await getBio();
 
     return {
