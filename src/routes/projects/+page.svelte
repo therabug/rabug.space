@@ -8,7 +8,7 @@
       {  title: "Boorah", description: "Tech videos", href: "https://youtube.com/@theboorah", image_url: "https://yt3.ggpht.com/1egf-hd9-kpRBNppsUDneIFzPHUWr2O-2Bm1aR8AJYNQN17wdcKwu3Imsf0FDaKI4491NXbIlWo=s600-c-k-c0x00ffffff-no-rj-rp-mo" },
       {  title: "The Rabug", href: "https://youtube.com/@therabug", image_url: "https://yt3.ggpht.com/bNrJiPqr8SmWRaS-LIxxVGkkaZ2ag1jg9ph6iaIUdzHUtbU4AG2ra3X7_o-rwp-RXguSp18Oow=s600-c-k-c0x00ffffff-no-rj-rp-mo" },
       {  title: "That Rabug", description: "Hobbies", href: "https://youtube.com/@thatrabug", image_url: "https://yt3.ggpht.com/B12yGyellXt9K10E4kP-5F3VouAi34E-HDOLBOCugkuVTjhLW9hLnbJwBzatNRGXdhEta_ls=s600-c-k-c0x00ffffff-no-rj-rp-mo" },
-      {  title: "@therabug", description: "Comedy", href: "https://instagram.com/@therabug", image_url: "https://yt3.ggpht.com/B12yGyellXt9K10E4kP-5F3VouAi34E-HDOLBOCugkuVTjhLW9hLnbJwBzatNRGXdhEta_ls=s600-c-k-c0x00ffffff-no-rj-rp-mo" },
+      {  title: "@therabug", description: "Comedy", href: "https://instagram.com/@therabug", image_url: "https://yt3.ggpht.com/1egf-hd9-kpRBNppsUDneIFzPHUWr2O-2Bm1aR8AJYNQN17wdcKwu3Imsf0FDaKI4491NXbIlWo=s600-c-k-c0x00ffffff-no-rj-rp-mo" },
     ];
 
     let categories: { title: string, projects: Project[] }[] = $derived([
