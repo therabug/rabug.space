@@ -18,7 +18,7 @@
       { title: "Github", handle: "@therabug", icon: SiGithub, href: "https://github.com/therabug" },
       { title: "(Twitter)", handle: "@therabug", icon: SiX, href: "https://x.com/therabug" },
       { title: "Bluesky", handle: "@rabug.bsky.social", icon: SiBluesky, href: "https://bsky.app/profile/rabug.bsky.social" },
-      { title: "Email", handle: "rabug50@gmail.com", icon: SiGmail, href: "mailto:rabug50@gmail.com" },
+      { title: "Email", handle: "hello@rabug.space", icon: SiGmail, href: "mailto:rabug50@gmail.com" },
     ];
 
     const setClipboard = (clipboardData: string | undefined) => {
